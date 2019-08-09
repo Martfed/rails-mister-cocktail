@@ -15,12 +15,24 @@
         <p><%= dose.description %></p>
       <% end %>
     </div>
+    <div id="reviews">
+      <h4><i class="far fa-comment-dots"></i> Reviews:</h4>
+      <div id="review-box">
+        <% @reviews.each do |review| %>
+          <div id="chat-box">
+            <p><span>User Name: </span><%= review.user_name %></p>
+            <p><span>Review: </span><%= review.description %></p>
+            <p><span>Rating: </span><%= '⭐' * review.star %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" id="expand-form">
     Create a new dose!
   </a>
-  <div id = "doses-form">
+  <div class = "form-box">
     <div class="collapse" id="collapseExample">
       <div class="card card-body">
         <h4>Fill in the form to add a dose!</h4>
@@ -39,6 +51,26 @@
       </div>
     </div>
   </div>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2" id="expand-form-review">
+    Create a new Review!
+  </a>
+  <div class = "form-box">
+    <div class="collapse" id="collapseExample2">
+      <div class="card card-body">
+        <h4>Fill in the form to add a Review!</h4>
+        <%= simple_form_for [@cocktail, @review] do |f| %>
+          <div class="form-group">
+            <%= f.input :user_name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :description, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :star, class: 'form-control' %>
+          </div>
+            <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
-
-

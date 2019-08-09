@@ -29,3 +29,4 @@ $(".banner").mousemove(function(e){
           $('.banner').css("background-position", newvalueX+"px     "+newvalueY+"px");
 });
 });
+

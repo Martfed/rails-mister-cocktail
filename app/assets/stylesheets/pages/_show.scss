@@ -10,5 +10,27 @@ h1 {
 
 #cocktail-main-info {
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 30% 1fr 30%;
+}
+
+#reviews {
+  width: 400px;
+  height: 100%;
+}
+
+#review-box {
+  overflow: scroll;
+  width: 100%;
+  height: 300px;
+  border: 1px solid black;
+  padding-left: 5%;
+  padding-top: 2%;
+}
+
+#chat-box {
+  border-bottom: 1px solid black;
+  font-size: 20px;
+  span {
+    font-weight: 600;
+  }
 }

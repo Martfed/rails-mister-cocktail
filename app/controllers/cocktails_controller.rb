@@ -10,6 +10,9 @@ class CocktailsController < ApplicationController
     @dose = Dose.new
     @dose.cocktail_id = @cocktail.id
     @doses = @cocktail.doses
+    @review = Review.new
+    @review.cocktail_id = @cocktail.id
+    @reviews = @cocktail.reviews
   end
 
   def new
