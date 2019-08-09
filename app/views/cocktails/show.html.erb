@@ -1,26 +1,44 @@
-<h1><%= @cocktail.name %></h1>
+<div id="show">
+  <%= link_to "Back to List", cocktails_path  %>
+  <h1><%= @cocktail.name %></h1>
+  <div id="cocktail-main-info">
+    <div id = "image-show">
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+      <%= link_to edit_cocktail_path(@cocktail) do   %>
+      <i class="fas fa-pen button-action"></i>
+    <% end %>
+    </div>
+    <div id="ingredients">
+      <h4><i class="fas fa-glass-martini-alt"></i> Recipee:</h4>
+      <% @doses.each do |dose| %>
+        <p><%= dose.amount %> <%= dose.ingredient.name %></p>
+        <p><%= dose.description %></p>
+      <% end %>
+    </div>
+  </div>
 
-<div id="ingredients">
-  <h4><i class="fas fa-glass-martini-alt"></i> Recipee:</h4>
-  <% @doses.each do |dose| %>
-    <p><%= dose.amount %> <%= dose.ingredient.name %></p>
-    <p><%= dose.description %></p>
-  <% end %>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" id="expand-form">
+    Create a new dose!
+  </a>
+  <div id = "doses-form">
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <h4>Fill in the form to add a dose!</h4>
+        <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <div class="form-group">
+            <%= f.input :amount, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.input :description, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.association :ingredient, class: 'form-control' %>
+          </div>
+            <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div id = "doses-form">
-  <h4>Fill in the form to add a dose!</h4>
-  <%= simple_form_for [@cocktail, @dose] do |f| %>
-    <div class="form-group">
-      <%= f.input :amount, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.input :description, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.association :ingredient, class: 'form-control' %>
-    </div>
-    <%= f.button :submit, class: "btn btn-primary" %>
-  <% end %>
-</div>
 

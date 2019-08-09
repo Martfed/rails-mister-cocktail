@@ -1,0 +1,14 @@
+h1 {
+  font-family: 'Yesteryear', cursive;
+  font-size: 100px;
+  text-align: center;
+}
+
+#image-show {
+  margin-left: 5vw;
+}
+
+#cocktail-main-info {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+}
